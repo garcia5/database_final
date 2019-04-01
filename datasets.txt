@@ -1,0 +1,8 @@
+https://raw.githubusercontent.com/garcia5/database_final/master/raw_data/historical-hourly-weather-data/city_attributes.csv
+https://raw.githubusercontent.com/garcia5/database_final/master/raw_data/historical-hourly-weather-data/humidity.csv
+https://raw.githubusercontent.com/garcia5/database_final/master/raw_data/historical-hourly-weather-data/pressure.csv
+https://raw.githubusercontent.com/garcia5/database_final/master/raw_data/historical-hourly-weather-data/temperature.csv
+https://raw.githubusercontent.com/garcia5/database_final/master/raw_data/historical-hourly-weather-data/weather_description.csv
+https://raw.githubusercontent.com/garcia5/database_final/master/raw_data/historical-hourly-weather-data/wind_direction.csv
+https://raw.githubusercontent.com/garcia5/database_final/master/raw_data/historical-hourly-weather-data/wind_speed.csv
+https://raw.githubusercontent.com/garcia5/database_final/master/raw_data/hourly-energy-consumption/pjm_hourly_est.csv

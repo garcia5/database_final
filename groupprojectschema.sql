@@ -252,16 +252,16 @@ CREATE TABLE windspeed(
 );
 CREATE TABLE megawattphourly(
   dt TIMESTAMP,
-  aep DECIMAL(7,1),
-  comed DECIMAL(7,1),
-  dayton DECIMAL(7,1),
-  deok DECIMAL(7,1),
-  dom DECIMAL(7,1),
-  duq DECIMAL(7,1),
-  ekpc DECIMAL(7,1),
-  fe DECIMAL(7,1),
-  ni DECIMAL(7,1),
-  pjme DECIMAL(7,1),
-  pjmw DECIMAL(7,1),
-  pjml DECIMAL(7,1)
+  American_Electric_Power DECIMAL(7,1),
+  Commonwealth_Edison DECIMAL(7,1),
+  Dayton DECIMAL(7,1),
+  Duke_Energy DECIMAL(7,1),
+  Dominion_Virginia_Power DECIMAL(7,1),
+  Duquesne_Light_Co DECIMAL(7,1),
+  East_Kentucky_Power_Co DECIMAL(7,1),
+  First_Energy DECIMAL(7,1),
+  Northern_Illinois_Hub DECIMAL(7,1),
+  PJM_East DECIMAL(7,1),
+  PJM_WEST DECIMAL(7,1),
+  PJM_LOAD DECIMAL(7,1)
 );

@@ -36,7 +36,8 @@ class DataLoader(object):
       # WEATHER DATA
 
       # read in cityattributes data
-      with open('./raw_data/historical-hourly-weather-data/city_attributes.csv', 'r') as cityattributes:
+      # with open('./raw_data/historical-hourly-weather-data/city_attributes.csv', 'r') as cityattributes:
+      with open('./city_attributes.csv', 'r') as cityattributes:
         for line in cityattributes.read().split("\n"):
           if line != '':
             data = line.split(",")
@@ -47,7 +48,8 @@ class DataLoader(object):
               """ %(data[0], data[1], data[2], data[3]))
 
       # humidity data
-      with open('./raw_data/historical-hourly-weather-data/humidity.csv', 'r') as humidity:
+      # with open('./raw_data/historical-hourly-weather-data/humidity.csv', 'r') as humidity:
+      with open('./humidity.csv', 'r') as humidity:
         for line in humidity.read().split("\n"):
           if line != '':
             data = line.split(",")
@@ -63,7 +65,8 @@ class DataLoader(object):
               INSERT INTO humidity VALUES(""" + (str(corrected_data))[1:-1]+ ");")
 
       # pressure data
-      with open('./raw_data/historical-hourly-weather-data/pressure.csv', 'r') as pressure:
+      # with open('./raw_data/historical-hourly-weather-data/pressure.csv', 'r') as pressure:
+      with open('./pressure.csv', 'r') as pressure:
         for line in pressure.read().split("\n"):
           if line != '':
             data = line.split(",")
@@ -79,7 +82,8 @@ class DataLoader(object):
               INSERT INTO pressure VALUES(""" + (str(corrected_data)).replace("None", "NULL")[1:-1]+ ");")
 
       # temperature data
-      with open('./raw_data/historical-hourly-weather-data/temperature.csv', 'r') as temperature:
+      # with open('./raw_data/historical-hourly-weather-data/temperature.csv', 'r') as temperature:
+      with open('./temperature.csv', 'r') as temperature:
         for line in temperature.read().split("\n"):
           if line != '':
             data = line.split(",")
@@ -95,7 +99,8 @@ class DataLoader(object):
               INSERT INTO temperature VALUES(""" + (str(corrected_data)).replace("None", "NULL")[1:-1]+ ");")
 
       # weather description
-      with open('./raw_data/historical-hourly-weather-data/weather_description.csv', 'r') as description:
+      # with open('./raw_data/historical-hourly-weather-data/weather_description.csv', 'r') as description:
+      with open('./weather_description.csv', 'r') as description:
         for line in description.read().split("\n"):
           if line != '':
             data = line.split(",")
@@ -111,7 +116,8 @@ class DataLoader(object):
               INSERT INTO description VALUES(""" + (str(corrected_data)).replace("None", "NULL")[1:-1]+ ");")
 
       # wind direction data
-      with open('./raw_data/historical-hourly-weather-data/wind_direction.csv', 'r') as winddirection:
+      # with open('./raw_data/historical-hourly-weather-data/wind_direction.csv', 'r') as winddirection:
+      with open('./wind_direction.csv', 'r') as winddirection:
         for line in winddirection.read().split("\n"):
           if line != '':
             data = line.split(",")
@@ -127,7 +133,8 @@ class DataLoader(object):
               INSERT INTO winddirection VALUES(""" + (str(corrected_data)).replace("None", "NULL")[1:-1]+ ");")
 
       # wind speed data
-      with open('./raw_data/historical-hourly-weather-data/wind_speed.csv', 'r') as windspeed:
+      # with open('./raw_data/historical-hourly-weather-data/wind_speed.csv', 'r') as windspeed:
+      with open('./wind_speed.csv', 'r') as windspeed:
         for line in windspeed.read().split("\n"):
           if line != '':
             data = line.split(",")
@@ -145,7 +152,8 @@ class DataLoader(object):
 
       #=================================================================================================
       # POWER DATA
-      with open('./raw_data/hourly-energy-consumption/pjm_hourly_est.csv', 'r') as power:
+      # with open('./raw_data/hourly-energy-consumption/pjm_hourly_est.csv', 'r') as power:
+      with open('./pjm_hourly_est.csv', 'r') as power:
         for line in power.read().split("\n"):
           if line != '':
             data = line.split(",")
@@ -166,5 +174,5 @@ class DataLoader(object):
 if __name__ == "__main__":
   loader = DataLoader()
   loader.createSchema()
-  loader.cleanDB()
+  # loader.cleanDB()
   loader.loadData()
