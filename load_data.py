@@ -37,6 +37,7 @@ class DataLoader(object):
 
       # read in cityattributes data
       # with open('./raw_data/historical-hourly-weather-data/city_attributes.csv', 'r') as cityattributes:
+      print("loading city attributes")
       with open('./city_attributes.csv', 'r') as cityattributes:
         for line in cityattributes.read().split("\n"):
           if line != '':
@@ -49,6 +50,7 @@ class DataLoader(object):
 
       # humidity data
       # with open('./raw_data/historical-hourly-weather-data/humidity.csv', 'r') as humidity:
+      print("loading humidity")
       with open('./humidity.csv', 'r') as humidity:
         for line in humidity.read().split("\n"):
           if line != '':
@@ -66,6 +68,7 @@ class DataLoader(object):
 
       # pressure data
       # with open('./raw_data/historical-hourly-weather-data/pressure.csv', 'r') as pressure:
+      print("loading pressure")
       with open('./pressure.csv', 'r') as pressure:
         for line in pressure.read().split("\n"):
           if line != '':
@@ -83,6 +86,7 @@ class DataLoader(object):
 
       # temperature data
       # with open('./raw_data/historical-hourly-weather-data/temperature.csv', 'r') as temperature:
+      print("loading temperature")
       with open('./temperature.csv', 'r') as temperature:
         for line in temperature.read().split("\n"):
           if line != '':
@@ -100,6 +104,7 @@ class DataLoader(object):
 
       # weather description
       # with open('./raw_data/historical-hourly-weather-data/weather_description.csv', 'r') as description:
+      print("loading descriptions")
       with open('./weather_description.csv', 'r') as description:
         for line in description.read().split("\n"):
           if line != '':
@@ -117,6 +122,7 @@ class DataLoader(object):
 
       # wind direction data
       # with open('./raw_data/historical-hourly-weather-data/wind_direction.csv', 'r') as winddirection:
+      print("loading wind direction")
       with open('./wind_direction.csv', 'r') as winddirection:
         for line in winddirection.read().split("\n"):
           if line != '':
@@ -134,6 +140,7 @@ class DataLoader(object):
 
       # wind speed data
       # with open('./raw_data/historical-hourly-weather-data/wind_speed.csv', 'r') as windspeed:
+      print("loading wind speed")
       with open('./wind_speed.csv', 'r') as windspeed:
         for line in windspeed.read().split("\n"):
           if line != '':
@@ -153,6 +160,7 @@ class DataLoader(object):
       #=================================================================================================
       # POWER DATA
       # with open('./raw_data/hourly-energy-consumption/pjm_hourly_est.csv', 'r') as power:
+      print("loading hourly energy estimates")
       with open('./pjm_hourly_est.csv', 'r') as power:
         for line in power.read().split("\n"):
           if line != '':
