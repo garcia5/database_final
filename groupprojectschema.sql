@@ -7,10 +7,8 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET row_security = off;
 
-CREATE DATABASE IF NOT EXISTS final;
-DROP USER IF EXISTS final;
-CREATE USER final WITH PASSWORD 'final';
-GRANT ALL PRIVILEGES ON DATABASE final to final;
+DROP SCHEMA IF EXISTS final CASCADE;
+CREATE SCHEMA final;
 
 CREATE TABLE cityattributes(
   city CHARACTER VARYING(255),
@@ -19,7 +17,7 @@ CREATE TABLE cityattributes(
   longitude DECIMAL(9,6)
 );
 CREATE TABLE humidity(
-  dt DATETIME
+  dt TIMESTAMP,
   vancouver DECIMAL(4,1),
   portland DECIMAL(4,1),
   sanfran DECIMAL(4,1),
@@ -58,7 +56,7 @@ CREATE TABLE humidity(
   jerusalem DECIMAL(4,1)
 );
 CREATE TABLE pressure(
-  dt DATETIME
+  dt TIMESTAMP,
   vancouver DECIMAL(5,1),
   portland DECIMAL(5,1),
   sanfran DECIMAL(5,1),
@@ -97,7 +95,7 @@ CREATE TABLE pressure(
   jerusalem DECIMAL(5,1)
 );
 CREATE TABLE temperature(
-  dt DATETIME
+  dt TIMESTAMP,
   vancouver DECIMAL(12,9),
   portland DECIMAL(12,9),
   sanfran DECIMAL(12,9),
@@ -135,8 +133,8 @@ CREATE TABLE temperature(
   nahariyya DECIMAL(12,9),
   jerusalem DECIMAL(12,9)
 );
-CREATE TABLE discription(
-  dt DATETIME
+CREATE TABLE description(
+  dt TIMESTAMP,
   vancouver CHARACTER VARYING(63),
   portland CHARACTER VARYING(63),
   sanfran CHARACTER VARYING(63),
@@ -175,7 +173,7 @@ CREATE TABLE discription(
   jerusalem CHARACTER VARYING(63)
 );
 CREATE TABLE winddirection(
-  dt DATETIME
+  dt TIMESTAMP,
   vancouver DECIMAL(4,1),
   portland DECIMAL(4,1),
   sanfran DECIMAL(4,1),
@@ -214,7 +212,7 @@ CREATE TABLE winddirection(
   jerusalem DECIMAL(4,1)
 );
 CREATE TABLE windspeed(
-  dt DATETIME
+  dt TIMESTAMP,
   vancouver DECIMAL(4,1),
   portland DECIMAL(4,1),
   sanfran DECIMAL(4,1),
@@ -253,7 +251,7 @@ CREATE TABLE windspeed(
   jerusalem DECIMAL(4,1)
 );
 CREATE TABLE megawattphourly(
-  dt DATETIME,
+  dt TIMESTAMP,
   aep DECIMAL(7,1),
   comed DECIMAL(7,1),
   dayton DECIMAL(7,1),
