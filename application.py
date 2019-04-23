@@ -49,7 +49,13 @@ class Application(object):
 
     # print out all available commands
     def printCommands(self):
-        print("Commands:\n[c] to edit city\t[s] to select time span\t[w] to select weather type\t[v] to select min/max/avg\t[r] to run query\t[q] to exit the program")
+        print("Commands:")
+        print("\t[c] to edit city")
+        print("\t[s] to select time span")
+        print("\t[w] to select weather type")
+        print("\t[v] to select min/max/avg")
+        print("\t[r] to run query")
+        print("\t[q] to exit the program")
 
     # select one of the available cities
     def cityInput(self):
