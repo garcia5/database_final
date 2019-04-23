@@ -19,8 +19,8 @@ class Database:
   # * field is only included when byYearly = 1
   def get_consumption_details_by_city(self, city_name, region, byYearly):
     cursor = self.conn.cursor()
-    techniqueSquidward = ["", "CAST(extract(year from dt) as INT) as year, "]
-    bringItAroundTime = ["", " GROUP BY extract(year from dt) ORDER BY year ASC"]
+    techniqueSquidward = ["", "CAST(extract(year from dt) as INT) as year, ", "CAST(extract(month from dt) as INT) as month, "]
+    bringItAroundTime = ["", " GROUP BY extract(year from dt) ORDER BY year ASC", " GROUP BY extract(month from dt) ORDER BY month ASC"]
     # Gather consumption data
     cursor.execute("SELECT %sROUND(AVG(%s),1), MIN(%s), MAX(%s) FROM megawattphourly%s", (AsIs(
         techniqueSquidward[byYearly]), AsIs(region), AsIs(region), AsIs(region), AsIs(bringItAroundTime[byYearly]),))
@@ -34,8 +34,8 @@ class Database:
   # def get_weather_details_by_city(self, city_name, byYearly, humidity = False, pressure = False, temperature = False, winddirection = False, windspeed = False, all_details = False, = False):
   def get_weather_details_by_city(self, city_name, byYearly, weather_type):
     cursor = self.conn.cursor()
-    youForgotTheTechnique = ["","CAST(extract(year from dt) as INT) as year,"]
-    techniqueTechnique = [""," GROUP BY extract(year from dt) ORDER BY year ASC"]
+    youForgotTheTechnique = ["", "CAST(extract(year from dt) as INT) as year, ", "CAST(extract(month from dt) as INT) as month, "]
+    techniqueTechnique = ["", " GROUP BY extract(year from dt) ORDER BY year ASC", " GROUP BY extract(month from dt) ORDER BY month ASC"]
 
     ret_obj = {}
     if weather_type == 'humidity' or weather_type == 'all':

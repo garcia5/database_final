@@ -103,20 +103,30 @@ class Application(object):
     # select overall/specific year
     def timespanInput(self):
         print("Select the timespan to view")
-        print("This can be 'Yearly' or 'All'")
-        span = input("Timespan: ")
+        print("All Time (1)")
+        print("Yearly (2)")
+        print("Monthly (3)")
+        valIn = input("Timespan: ")
+        if valIn == "1":
+          timespan = 'all'
+        if valIn == "2":
+          timespan = 'yearly'
+        if valIn == "3":
+          timespan = 'monthly'
 
         try:
-            if span.lower() != 'all' and span.lower() != 'yearly':
+            if int(valIn) < 0 or int(valIn) > 3:
                 raise Exception("--Invalid option---")
 
-            self.currentTimespan = span.lower()
+            self.currentTimespan = timespan
 
         except Exception as e:
             print(e)
             print()
             self.currentTimespan = "all"
             self.timespanInput()
+        except ValueError as e:
+            print("--Invalid option--")
 
     # weather option to look at ("humidity", "pressure", etc)
     def weatherTypeInput(self):
@@ -166,7 +176,8 @@ class Application(object):
         d = Database()
         self.results = {}
         weather = self.currentWeatherType
-        byYearly = (self.currentTimespan == 'yearly')
+        tOptions = ['all', 'yearly', 'monthly']
+        byYearly = tOptions.index(self.currentTimespan)
         if self.currentCity.lower() == "all":
             for c in self.availableData:
                 cityName = c['city'].lower()
@@ -206,7 +217,7 @@ class Application(object):
 
     def printResults(self):
         print()
-        yearStr = 'Year'
+        yearStr = self.currentTimespan
         valStr = self.currentValue
         typeStr = self.currentWeatherType
         unit = ''
@@ -224,7 +235,11 @@ class Application(object):
         for key, value in self.results.items():
             weatherData = value[self.currentWeatherType]
             powerData = value['power']
-            powerData = [r for r in powerData if ((len(r) == 4 and int(r[0]) >= 2012 and int(r[0] <= 2017)) or len(r) == 3)]
+            powerData = [r for r in powerData if (
+              (len(r) == 4 and int(r[0]) >= 2012 and int(r[0] <= 2017)) or
+              (len(r) == 4 and int(r[0]) > 0 and int(r[0]) <= 12) or
+              len(r) == 3)
+            ]
 
             if len(powerData) != len(weatherData):
                 print("oopsie")
