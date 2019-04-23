@@ -17,3 +17,13 @@ Then run:
 $ psql < createdb.sql
 $ python3.7 load_data.py
 ```
+
+## Running the application
+
+After the data has been loaded, run:
+
+```
+$ python3.7 application.py
+```
+
+to start the data script.
