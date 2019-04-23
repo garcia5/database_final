@@ -209,7 +209,14 @@ class Application(object):
         yearStr = 'Year'
         valStr = self.currentValue
         typeStr = self.currentWeatherType
-        heading = "City, {}, {} {}, {} power".format(yearStr, valStr, typeStr, valStr)
+        unit = ''
+        if typeStr == "humidity": unit = '%'
+        if typeStr == "pressure": unit = 'inMg'
+        if typeStr == "temperature": unit = '°F'
+        if typeStr == "winddirection": unit = '°'
+        if typeStr == "windspeed": unit = "mph"
+
+        heading = "City, {}, {} {} ({}), {} power (MW)".format(yearStr, valStr, typeStr, unit, valStr)
         print("RESULTS" + "-"*(len(heading)-7))
         print(heading)
         print("_"*len(heading))
@@ -238,15 +245,21 @@ class Application(object):
                     rowStr += "All, "
 
                 if self.currentValue.lower() == 'avg':
-                    weatherVal = float(weatherRow[0 + offset]) * (9/5) - 459.67
+                    weatherVal = 0.0
+                    if typeStr == 'temperature': weatherVal = float(weatherRow[0 + offset]) * (9/5) - 459.67
+                    else: weatherVal = float(weatherRow[0 + offset])
                     rowStr += str(int(weatherVal)) + ", "
                     rowStr += str(powerRow[0 + offset])
                 if self.currentValue.lower() == 'min':
-                    weatherVal = float(weatherRow[1 + offset]) * (9/5) - 459.67
+                    weatherVal = 0.0
+                    if typeStr == 'temperature': weatherVal = float(weatherRow[1 + offset]) * (9/5) - 459.67
+                    else: weatherVal = float(weatherRow[1 + offset])
                     rowStr += str(int(weatherVal)) + ", "
                     rowStr += str(powerRow[1 + offset])
                 if self.currentValue.lower() == 'max':
-                    weatherVal = float(weatherRow[2 + offset]) * (9/5) - 459.67
+                    weatherVal = 0.0
+                    if typeStr == 'temperature': weatherVal = float(weatherRow[2 + offset]) * (9/5) - 459.67
+                    else: weatherVal = float(weatherRow[2 + offset])
                     rowStr += str(int(weatherVal)) + ", "
                     rowStr += str(powerRow[2 + offset])
 
